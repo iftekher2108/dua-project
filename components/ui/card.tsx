@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils"; // optional: utility to combine classes
+import { cn } from "@/lib/utils/cn"; // optional: utility to combine classes
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 

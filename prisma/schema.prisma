@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+  // The output path for the generated Prisma Client.
+  // output   = "../app/generated/prisma"
+}
+
+// Defines the data source.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// This model now has a primary key `id` and relationships defined.
+model Category {
+  id           Int           @id @default(autoincrement())
+  cat_id       Int           @unique
+  cat_name_bn  String?
+  cat_name_en  String?
+  no_of_subcat Int?
+  no_of_dua    Int?
+  cat_icon     String?
+
+  // Defines a relationship with the SubCategory model.
+  subCategories SubCategory[]
+  // Defines a relationship with the Dua model.
+  duas          Dua[]
+}
+
+// This model also has a primary key and a relationship to Category and Dua.
+model SubCategory {
+  id             Int         @id @default(autoincrement())
+  cat_id         Int
+  subcat_id      Int         @unique
+  subcat_name_bn String?
+  subcat_name_en String?
+  no_of_dua      Int?
+  
+  // Relationship to Category, linking to its unique `cat_id`.
+  category       Category    @relation(fields: [cat_id], references: [cat_id])
+  // Relationship to Dua.
+  duas           Dua[]
+}
+
+// This model now has a primary key and relationships.
+model Dua {
+  id                   Int         @id @default(autoincrement())
+  cat_id               Int
+  subcat_id            Int
+  dua_id               Int         @unique
+  dua_name_bn          String?
+  dua_name_en          String?
+  top_bn               String?
+  top_en               String?
+  dua_arabic           String?
+  dua_indopak          String?
+  clean_arabic         String?
+  transliteration_bn   String?
+  transliteration_en   String?
+  translation_bn       String?
+  translation_en       String?
+  bottom_bn            String?
+  bottom_en            String?
+  refference_bn        String?
+  refference_en        String?
+  audio                String?
+
+  // Relationship to Category, linking to its `cat_id`.
+  category             Category    @relation(fields: [cat_id], references: [cat_id])
+  // Relationship to SubCategory, linking to its `subcat_id`.
+  subCategory          SubCategory @relation(fields: [subcat_id], references: [subcat_id])
+}

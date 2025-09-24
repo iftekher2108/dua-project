@@ -1,8 +1,11 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import  { Button } from "@/components/ui/button";
+import HomeComponent from "./home";
+import SidePanel from "@/components/sidepanel";
 import { Menu } from "lucide-react";
 export default function Home() {
+
   return (
     <>
      <div className="min-h-screen bg-[#f8f9f6] text-[#1c1c1c]">
@@ -19,18 +22,14 @@ export default function Home() {
       <div className="flex flex-col md:flex-row">
         {/* Sidebar */}
         <aside className="w-full md:w-64 bg-white border-r border-[#e0e4dc] p-4">
-          <h2 className="text-lg font-semibold mb-4 text-[#446442]">Search by Dua Categories</h2>
-          <nav className="space-y-2 text-sm">
-            <a href="#" className="block p-2 rounded hover:bg-[#eef3ea]">1. The servant is dependent on his Lord</a>
-            <a href="#" className="block p-2 rounded hover:bg-[#eef3ea]">2. Allah’s guidance #1</a>
-            <a href="#" className="block p-2 rounded hover:bg-[#eef3ea]">3. Allah’s guidance #2</a>
-            <a href="#" className="block p-2 rounded hover:bg-[#eef3ea]">4. Patience and Reward</a>
-            <a href="#" className="block p-2 rounded hover:bg-[#eef3ea]">5. After Paradise is granted to a person</a>
-          </nav>
+          <SidePanel />
         </aside>
 
         {/* Main Content */}
         <main className="flex-1 p-6 space-y-6">
+
+          <HomeComponent />
+
           <section>
             <h1 className="text-2xl font-bold text-[#446442] mb-6">The servant is dependent on his Lord</h1>
             {/* Card 1 */}
