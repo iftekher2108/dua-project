@@ -1,38 +1,34 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import  { Button } from "@/components/ui/button";
 import HomeComponent from "./home";
 import SidePanel from "@/components/sidepanel";
-import { Menu } from "lucide-react";
 export default function Home() {
+
 
   return (
     <>
-     <div className="min-h-screen bg-[#f8f9f6] text-[#1c1c1c]">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-[#eef3ea] border-b border-[#d2e3c8]">
-        <div className="flex items-center gap-3">
-          <Menu className="w-6 h-6 text-[#6e8c6f]" />
-          <span className="text-xl font-semibold text-[#446442]">Dua & Ruqyah</span>
-        </div>
-        <Button className="bg-[#e6f2dc] text-[#446442] border border-[#bfd6ac] hover:bg-[#d4e6c2]">Export to PDF</Button>
-      </header>
-
+  
       {/* Layout */}
-      <div className="flex flex-col md:flex-row">
+      <div className=" grid grid-cols-12">
         {/* Sidebar */}
-        <aside className="w-full md:w-64 bg-white border-r border-[#e0e4dc] p-4">
+        <aside className="col-span-3 bg-base-300">
           <SidePanel />
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 space-y-6">
+        <main className="col-span-9 p-6 space-y-6">
 
           <HomeComponent />
 
-          <section>
+          <div className="card">
+            <div className="card-body">
+              <h2 className="card-title">{}</h2>
+
+            </div>
+
+          </div>
+
+          {/* <section>
             <h1 className="text-2xl font-bold text-[#446442] mb-6">The servant is dependent on his Lord</h1>
-            {/* Card 1 */}
             <Card className="bg-white border border-[#e0e4dc] mb-3 shadow-sm">
               <CardContent className="space-y-3 p-5">
                 <p className="text-[#446442] text-right text-lg font-semibold">أَيُّهَا النَّاسُ أَنْتُمُ الْفُقَرَاءُ إِلَى اللَّهِ</p>
@@ -41,7 +37,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Card 2 */}
+
             <Card className="bg-white border border-[#e0e4dc] mb-3 shadow-sm">
               <CardContent className="space-y-3 p-5">
                 <p className="text-[#446442] text-lg text-right font-semibold leading-relaxed">
@@ -52,7 +48,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Card 3 */}
+
             <Card className="bg-white border border-[#e0e4dc] shadow-sm">
               <CardContent className="space-y-3 p-5">
                 <p className="text-[#446442] text-lg text-right font-semibold leading-relaxed">
@@ -62,10 +58,10 @@ export default function Home() {
                 <p className="text-xs text-gray-500 italic">Surah al-Fatir 35:15</p>
               </CardContent>
             </Card>
-          </section>
+
+          </section> */}
         </main>
       </div>
-    </div>
     </>
   );
 }

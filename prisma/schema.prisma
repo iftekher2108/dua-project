@@ -24,6 +24,7 @@ model Category {
   subCategories SubCategory[]
   // Defines a relationship with the Dua model.
   duas          Dua[]
+  @@map("category")
 }
 
 // This model also has a primary key and a relationship to Category and Dua.
@@ -39,6 +40,7 @@ model SubCategory {
   category       Category    @relation(fields: [cat_id], references: [cat_id])
   // Relationship to Dua.
   duas           Dua[]
+  @@map("sub_category")
 }
 
 // This model now has a primary key and relationships.
@@ -68,4 +70,5 @@ model Dua {
   category             Category    @relation(fields: [cat_id], references: [cat_id])
   // Relationship to SubCategory, linking to its `subcat_id`.
   subCategory          SubCategory @relation(fields: [subcat_id], references: [subcat_id])
+  @@map("dua")
 }

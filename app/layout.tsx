@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Menu } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme={"light"}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-[#f8f9f6] text-[#1c1c1c]">
+          {/* Header */}
+          <header className="flex items-center justify-between px-6 py-4 bg-[#eef3ea] border-b border-[#d2e3c8]">
+            <div className="flex items-center gap-3">
+              <Menu className="w-6 h-6 text-[#6e8c6f]" />
+              <span className="text-xl font-semibold text-[#446442]">Dua & Ruqyah</span>
+            </div>
+            <button className="btn btn-primary">Export to PDF</button>
+          </header>
+
+          {children}
+          
+        </div>
       </body>
     </html>
   );
