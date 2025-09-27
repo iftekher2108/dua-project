@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation";
 
 type Category = {
     id: number;
@@ -12,6 +13,7 @@ type Category = {
 };
 
 export default function SidePanel() {
+    const pathname = usePathname()
     const [categories, setCategories] = useState<Category[]>([]);
     useEffect(() => {
         (async () => {
@@ -36,7 +38,7 @@ export default function SidePanel() {
                                         <summary className="p-3">{category.cat_name_en} <br />{category.cat_name_bn} </summary>
                                         <ul>
                                             {category.subCategories.map(subCategory =>(
-                                              <li key={subCategory.id}><Link className="p-2" href={`/category/${category.id}/sub-category`}>{subCategory.subcat_name_en} <br />{subCategory.subcat_name_bn}</Link></li>  
+                                              <li key={subCategory.id}><Link className={`flex flex-col text-left items-start p-2 ${pathname == `/sub-category/${subCategory.id}/dua` ? "bg-primary text-white" : "text-black"}`} href={`/sub-category/${subCategory.id}/dua`}> <p className="font-bold">{subCategory.subcat_name_en}</p> <p className="text-sm">{subCategory.subcat_name_bn}</p></Link></li>  
                                             ))}
                                         </ul>
                                     </details>

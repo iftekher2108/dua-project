@@ -5,15 +5,15 @@ type params = {
 }
 export async function GET(req:NextRequest,context:{params:params}) {
     const { id } = context.params;
-    const duas = await prisma.dua.findMany({
+    const subCategory = await prisma.subCategory.findUnique({
         where:{
-            subcat_id: Number(id)
+            id: Number(id)
         },
         include:{
+            duas:true,
             category:true,
-            subCategory:true
         }
     })
-    return NextResponse.json({duas})
+    return NextResponse.json({subCategory})
 }
 
