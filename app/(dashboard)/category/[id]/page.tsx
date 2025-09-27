@@ -1,30 +1,11 @@
-import  { Button } from "@/components/ui/button";
-import HomeComponent from "./home";
-import SidePanel from "@/components/sidepanel";
-export default function Home() {
-
+export default function Page() {
 
   return (
     <>
-  
-      {/* Layout */}
-      <div className=" grid grid-cols-12">
-        {/* Sidebar */}
-        <aside className="col-span-3 bg-base-300">
-          <SidePanel />
-        </aside>
-
-        {/* Main Content */}
-        <main className="col-span-9 p-6 space-y-6">
-
-          <HomeComponent />
-
           <div className="card">
             <div className="card-body">
               <h2 className="card-title">{}</h2>
-
             </div>
-
           </div>
 
           {/* <section>
@@ -60,8 +41,6 @@ export default function Home() {
             </Card>
 
           </section> */}
-        </main>
-      </div>
     </>
   );
 }

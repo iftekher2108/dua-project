@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import SidePanel from "@/components/sidepanel";
+// import { Geist, Geist_Mono } from "next/font/google";
+import "../globals.css";
 import { Menu } from "lucide-react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,14 +20,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children
+}: any) {
   return (
     <html lang="en" data-theme={"light"}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <div className="min-h-screen bg-[#f8f9f6] text-[#1c1c1c]">
           {/* Header */}
@@ -38,10 +37,22 @@ export default function RootLayout({
             <button className="btn btn-primary">Export to PDF</button>
           </header>
 
-          {children}
-          
+
+          {/* Layout */}
+          <div className=" grid grid-cols-12">
+            {/* Sidebar */}
+            <aside className="col-span-3 bg-base-300">
+              <SidePanel />
+            </aside>
+
+            {/* Main Content */}
+            <main className="col-span-9 p-6 space-y-6">
+              {children}
+            </main>
+          </div>
+
         </div>
       </body>
-    </html>
+    </html >
   );
 }

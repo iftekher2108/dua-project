@@ -1,10 +1,12 @@
 "use client"
 
+import Link from "next/link";
 import { useEffect, useState } from "react"
 
 type Category = {
     id: number;
     cat_name_en: string;
+    cat_name_bn: string;
     subCategories: any[]; // or specify the type of subcategory if known
     // add other properties if needed
 };
@@ -31,10 +33,10 @@ export default function SidePanel() {
                             return (
                                 <li key={category.id}>
                                     <details>
-                                        <summary className="p-3">{category.cat_name_en}</summary>
+                                        <summary className="p-3">{category.cat_name_en} <br />{category.cat_name_bn} </summary>
                                         <ul>
                                             {category.subCategories.map(subCategory =>(
-                                              <li key={subCategory.id}><a className="p-2" href="#">{subCategory.subcat_name_en}</a></li>  
+                                              <li key={subCategory.id}><Link className="p-2" href={`/category/${category.id}/sub-category`}>{subCategory.subcat_name_en} <br />{subCategory.subcat_name_bn}</Link></li>  
                                             ))}
                                         </ul>
                                     </details>
@@ -42,7 +44,7 @@ export default function SidePanel() {
                             )
                         } else {
                             return (
-                                <li key={category.id}><a className="p-2" href="#">{category.cat_name_en}</a></li>
+                                <li key={category.id}><Link className="p-2" href={`/category/${category.id}/sub-category`}>{category.cat_name_en}</Link></li>
                             )
                         }
                     })}
